@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pagos</title>
+</head>
+<body>
+    <h1>Lista de Pagos</h1>
+    <a th:href="@{/pagos/create}">Nuevo Pago</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Monto</th>
+                <th>Fecha de Pago</th>
+                <th>Método de Pago</th>
+                <th>Factura</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pago : ${pagos}">
+                <td th:text="${pago.id}"></td>
+                <td th:text="${pago.monto}"></td>
+                <td th:text="${pago.fechaPago}"></td>
+                <td th:text="${pago.metodoPago}"></td>
+                <td th:text="'Factura #' + ${pago.factura.id}"></td>
+                <td>
+                    <a th:href="@{/pagos/{id}(id=${pago.id})}">Ver</a>
+                    <a th:href="@{/pagos/{id}/edit(id=${pago.id})}">Editar</a>
+                    <a th:href="@{/pagos/{id}/delete(id=${pago.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Pago</title>
+</head>
+<body>
+    <h1>Detalles de Pago</h1>
+    <p><strong>ID:</strong> <span th:text="${pago.id}"></span></p>
+    <p><strong>Monto:</strong> <span th:text="${pago.monto}"></span></p>
+    <p><strong>Fecha de Pago:</strong> <span th:text="${pago.fechaPago}"></span></p>
+    <p><strong>Método de Pago:</strong> <span th:text="${pago.metodoPago}"></span></p>
+    <p><strong>Factura:</strong> <span th:text="'Factura #' + ${pago.factura.id}"></span></p>
+    <a th:href="@{/pagos}">Volver</a>
+</body>
+</html>

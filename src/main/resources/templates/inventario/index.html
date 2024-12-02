@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Inventario</title>
+</head>
+<body>
+    <h1>Lista de Productos en Inventario</h1>
+    <a th:href="@{/inventarios/create}">Agregar Nuevo Producto</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Proveedor</th>
+                <th>Fecha de Entrada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="inventario : ${inventarios}">
+                <td th:text="${inventario.id}"></td>
+                <td th:text="${inventario.producto}"></td>
+                <td th:text="${inventario.cantidad}"></td>
+                <td th:text="${inventario.precioUnitario}"></td>
+                <td th:text="${inventario.proveedor}"></td>
+                <td th:text="${inventario.fechaEntrada}"></td>
+                <td>
+                    <a th:href="@{/inventarios/{id}(id=${inventario.id})}">Ver</a>
+                    <a th:href="@{/inventarios/{id}/edit(id=${inventario.id})}">Editar</a>
+                    <a th:href="@{/inventarios/{id}/delete(id=${inventario.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</

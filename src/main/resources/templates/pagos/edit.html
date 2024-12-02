@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Pago</title>
+</head>
+<body>
+    <h1>Editar Pago</h1>
+    <form th:action="@{/pagos/{id}(id=${pago.id})}" method="post">
+        <!-- Monto -->
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" name="monto" step="0.01" th:value="${pago.monto}" required>
+
+        <!-- Fecha de Pago -->
+        <label for="fechaPago">Fecha de Pago:</label>
+        <input type="date" id="fechaPago" name="fechaPago" th:value="${pago.fechaPago}" required>
+
+        <!-- Método de Pago -->
+        <label for="metodoPago">Método de Pago:</label>
+        <input type="text" id="metodoPago" name="metodoPago" th:value="${pago.metodoPago}" required>
+
+        <!-- Selección de Factura -->
+        <label for="factura">Factura:</label>
+        <select id="factura" name="factura" required>
+            <option th:each="factura : ${facturas}" th:value="${factura.id}" th:text="'Factura #' + ${factura.id}" th:selected="${factura.id == pago.factura.id}"></option>
+        </select>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

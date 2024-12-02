@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Conteos</title>
+</head>
+<body>
+    <h1>Lista de Conteos</h1>
+    <a th:href="@{/conteos/create}">Nuevo Conteo</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Auto</th>
+                <th>Producto</th>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="conteo : ${conteos}">
+                <td th:text="${conteo.id}"></td>
+                <td th:text="${conteo.auto.nombre}"></td>
+                <td th:text="${conteo.producto.producto}"></td>
+                <td th:text="${conteo.tipo}"></td>
+                <td th:text="${conteo.cantidad}"></td>
+                <td th:text="${conteo.fecha}"></td>
+                <td>
+                    <a th:href="@{/conteos/{id}(id=${conteo.id})}">Ver</a>
+                    <a th:href="@{/conteos/{id}/edit(id=${conteo.id})}">Editar</a>
+                    <a th:href="@{/conteos/{id}/delete(id=${conteo.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

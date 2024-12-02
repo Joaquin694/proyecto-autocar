@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Producto</title>
+</head>
+<body>
+    <h1>Detalles del Producto</h1>
+    <p><strong>ID:</strong> <span th:text="${inventario.id}"></span></p>
+    <p><strong>Producto:</strong> <span th:text="${inventario.producto}"></span></p>
+    <p><strong>Cantidad:</strong> <span th:text="${inventario.cantidad}"></span></p>
+    <p><strong>Precio Unitario:</strong> <span th:text="${inventario.precioUnitario}"></span></p>
+    <p><strong>Proveedor:</strong> <span th:text="${inventario.proveedor}"></span></p>
+    <p><strong>Fecha de Entrada:</strong> <span th:text="${inventario.fechaEntrada}"></span></p>
+    <a th:href="@{/inventarios}">Volver a la lista</a>
+</body>
+</html>

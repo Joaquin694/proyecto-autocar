@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles del Auto</title>
+</head>
+<body>
+    <h1>Detalles del Auto</h1>
+    <p>Nombre: <span th:text="${auto.nombre}"></span></p>
+    <p>Modelo: <span th:text="${auto.modelo}"></span></p>
+    <p>Color: <span th:text="${auto.color}"></span></p>
+    <p>Placa: <span th:text="${auto.placa}"></span></p>
+    <p>Marca: <span th:text="${auto.marca}"></span></p>
+    <p>Estado: <span th:text="${auto.estado}"></span></p>
+    <p>Fecha de Ingreso: <span th:text="${auto.fechaIngreso}"></span></p>
+    <a href="/autos">Volver</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Ticketera</title>
+</head>
+<body>
+    <h1>Lista de Tiquetes</h1>
+    <a th:href="@{/tiketera/create}">Nuevo Tiket</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Auto</th>
+                <th>Ticket</th>
+                <th>Fecha de Emisión</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tiketera : ${tiketera}">
+                <td th:text="${tiketera.id}"></td>
+                <td th:text="${tiketera.auto.nombre}"></td>
+                <td th:text="${tiketera.ticket}"></td>
+                <td th:text="${tiketera.fechaEmision}"></td>
+                <td th:text="${tiketera.estadoTicket}"></td>
+                <td>
+                    <a th:href="@{/tiketera/{id}(id=${tiketera.id})}">Ver</a>
+                    <a th:href="@{/tiketera/{id}/edit(id=${tiketera.id})}">Editar</a>
+                    <a th:href="@{/tiketera/{id}/delete(id=${tiketera.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

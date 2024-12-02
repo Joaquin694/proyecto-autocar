@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Conteo</title>
+</head>
+<body>
+    <h1>Detalles de Conteo</h1>
+    <p><strong>ID:</strong> <span th:text="${conteo.id}"></span></p>
+    <p><strong>Auto:</strong> <span th:text="${conteo.auto.nombre}"></span></p>
+    <p><strong>Producto:</strong> <span th:text="${conteo.producto.producto}"></span></p>
+    <p><strong>Tipo:</strong> <span th:text="${conteo.tipo}"></span></p>
+    <p><strong>Cantidad:</strong> <span th:text="${conteo.cantidad}"></span></p>
+    <p><strong>Fecha:</strong> <span th:text="${conteo.fecha}"></span></p>
+    <a th:href="@{/conteos}">Volver</a>
+</body>
+</html>

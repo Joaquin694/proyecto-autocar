@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Factura</title>
+</head>
+<body>
+    <h1>Editar Factura</h1>
+    <form th:action="@{/facturas/{id}(id=${factura.id})}" method="post">
+        <!-- Fecha -->
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" th:value="${factura.fecha}" required>
+
+        <!-- Total -->
+        <label for="total">Total:</label>
+        <input type="number" id="total" name="total" th:value="${factura.total}" step="0.01" required>
+
+        <!-- Método de Pago -->
+        <label for="metodoPago">Método de Pago:</label>
+        <select id="metodoPago" name="metodoPago" required>
+            <option th:selected="${factura.metodoPago == 'Efectivo'}" value="Efectivo">Efectivo</option>
+            <option th:selected="${factura.metodoPago == 'Tarjeta'}" value="Tarjeta">Tarjeta</option>
+            <option th:selected="${factura.metodoPago == 'Transferencia'}" value="Transferencia">Transferencia</option>
+        </select>
+
+        <!-- Estado de Pago -->
+        <label for="estadoPago">Estado de Pago:</label>
+        <select id="estadoPago" name="estadoPago" required>
+            <option th:selected="${factura.estadoPago == 'pendiente'}" value="pendiente">Pendiente</option>
+            <option th:selected="${factura.estadoPago == 'pagado'}" value="pagado">Pagado</option>
+        </select>
+
+        <!-- Auto -->
+        <label for="auto">Auto:</label>
+        <select id="auto" name="auto" th:each="auto : ${autos}" th:value="${auto.id}" th:text="${auto.nombre}" th:selected="${factura.auto.id == auto.id}"></select>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

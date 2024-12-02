@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editar Auto</title>
+    </head>
+    <body>
+        <h1>Editar Auto</h1>
+        <form th:action="@{/autos/{id}(id=${auto.id})}" th:object="${auto}" method="post">
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}" /><br>
+            <label>Modelo:</label>
+            <input type="text" th:field="*{modelo}" /><br>
+            <label>Color:</label>
+            <input type="text" th:field="*{color}" /><br>
+            <label>Placa:</label>
+            <input type="text" th:field="*{placa}" /><br>
+            <label>Marca:</label>
+            <input type="text" th:field="*{marca}" /><br>
+            <label>Fecha de Ingreso:</label>
+            <input type="text" th:field="*{estado}" /><br>
+            <label>Fecha de Ingreso:</label>
+            <input type="date" th:field="*{fechaIngreso}" /><br>
+            <button type="submit">Guardar</button>
+
+        </form>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Tiketera</title>
+</head>
+<body>
+    <h1>Crear Tiketera</h1>
+    <form th:action="@{/tiketera}" method="post">
+        <!-- Selección de Auto -->
+        <label for="auto">Auto:</label>
+        <select id="auto" name="auto" required>
+            <option th:each="auto : ${autos}" th:value="${auto.id}" th:text="${auto.nombre}"></option>
+        </select>
+
+        <!-- Ticket -->
+        <label for="ticket">Ticket:</label>
+        <input type="text" id="ticket" name="ticket" required>
+
+        <!-- Fecha de Emisión -->
+        <label for="fechaEmision">Fecha de Emisión:</label>
+        <input type="date" id="fechaEmision" name="fechaEmision" required>
+
+        <!-- Estado del Ticket -->
+        <label for="estadoTicket">Estado del Ticket:</label>
+        <input type="text" id="estadoTicket" name="estadoTicket" value="activo" required>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
