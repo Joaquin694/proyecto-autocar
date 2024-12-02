@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Tiketera</title>
+    
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body{
+                padding: 20px;
+            }
+        </style>
 </head>
 <body>
     <h1>Crear Tiketera</h1>
@@ -23,7 +33,10 @@
 
         <!-- Estado del Ticket -->
         <label for="estadoTicket">Estado del Ticket:</label>
-        <input type="text" id="estadoTicket" name="estadoTicket" value="activo" required>
+        <select id="estadoTicket" name="estadoTicket" required>
+            <option value="entregado">Entregado</option>
+            <option value="usado">Usado</option>
+        </select>
 
         <button type="submit">Guardar</button>
     </form>

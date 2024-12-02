@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Ticketera</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body{
+                padding: 20px;
+            }
+        </style>
 </head>
 <body>
     <h1>Lista de Tiquetes</h1>
-    <a th:href="@{/tiketera/create}">Nuevo Tiket</a>
+    <a th:href="@{/tiketeras/create}">Nuevo Tiket</a>
     <table border="1">
         <thead>
             <tr>
@@ -19,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="tiketera : ${tiketera}">
+            <tr th:each="tiketera : ${tiketeras}">
                 <td th:text="${tiketera.id}"></td>
                 <td th:text="${tiketera.auto.nombre}"></td>
                 <td th:text="${tiketera.ticket}"></td>

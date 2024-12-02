@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Inventario</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body{
+                padding: 20px;
+            }
+        </style>
 </head>
 <body>
     <h1>Lista de Productos en Inventario</h1>
-    <a th:href="@{/inventarios/create}">Agregar Nuevo Producto</a>
+    <a th:href="@{/inventario/create}">Agregar Nuevo Producto</a>
     <table border="1">
         <thead>
             <tr>
@@ -20,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="inventario : ${inventarios}">
+            <tr th:each="inventario : ${inventario}">
                 <td th:text="${inventario.id}"></td>
                 <td th:text="${inventario.producto}"></td>
                 <td th:text="${inventario.cantidad}"></td>
@@ -36,4 +45,4 @@
         </tbody>
     </table>
 </body>
-</
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body {
+                padding: 20px;
+            }
+
+            /* Ajustar el tamaño del gráfico */
+            #graficoMetodoPago {
+                width: 150px !important;
+                height: 150px !important;
+            }
+
+            #graficoGananciasDia {
+                width: 150px !important;
+                height: 150px !important;
+            }
+
+            #graficoMarcas {
+                width: 150px !important;
+                height: 150px !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Dashboard de Pagos y Autos</h1>
+
+            <!-- Gráfico de Marcas de Autos -->
+            <h3>Marcas de Autos</h3>
+            <canvas id="graficoMarcas"></canvas>
+
+            <!-- Gráfico Circular: Métodos de Pago -->
+            <h3>Distribución de Métodos de Pago</h3>
+            <canvas id="graficoMetodoPago"></canvas>
+
+            <!-- Gráfico Lineal: Ganancias por Día -->
+            <h3>Ganancias por Día</h3>
+            <canvas id="graficoGananciasDia"></canvas>
+
+            <script th:inline="javascript">
+                // Datos del gráfico de Marcas de Autos (Gráfico Circular)
+                var marcas = /*[[${marcas}]]*/ [];
+                var cantidadesAutos = /*[[${cantidadesAutos}]]*/ [];
+
+                var ctxMarcas = document.getElementById('graficoMarcas').getContext('2d');
+                var chartMarcas = new Chart(ctxMarcas, {
+                    type: 'pie',
+                    data: {
+                        labels: marcas, // Marcas de autos como etiquetas
+                        datasets: [{
+                            label: 'Cantidad de Autos por Marca',
+                            data: cantidadesAutos, // Cantidad de autos por marca
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return tooltipItem.label + ': ' + tooltipItem.raw + ' autos';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Datos del gráfico de Métodos de Pago (Gráfico Circular)
+                var metodosPago = /*[[${metodosPago}]]*/ [];
+                var cantidadesMetodo = /*[[${cantidadesMetodo}]]*/ [];
+
+                var ctxMetodoPago = document.getElementById('graficoMetodoPago').getContext('2d');
+                var chartMetodoPago = new Chart(ctxMetodoPago, {
+                    type: 'pie',
+                    data: {
+                        labels: metodosPago, // Métodos de pago como etiquetas
+                        datasets: [{
+                            label: 'Métodos de Pago',
+                            data: cantidadesMetodo, // Cantidades de cada método de pago
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return tooltipItem.label + ': ' + tooltipItem.raw + ' pagos';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Datos del gráfico de Ganancias por Día (Gráfico Lineal)
+                var fechasPago = /*[[${fechasPago}]]*/ [];
+                var montosFecha = /*[[${montosFecha}]]*/ [];
+
+                var ctxGananciasDia = document.getElementById('graficoGananciasDia').getContext('2d');
+                var chartGananciasDia = new Chart(ctxGananciasDia, {
+                    type: 'line',
+                    data: {
+                        labels: fechasPago, // Fechas de pago como etiquetas
+                        datasets: [{
+                            label: 'Ganancias por Día',
+                            data: montosFecha, // Monto ganado cada día
+                            fill: false,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem) {
+                                        return '$' + tooltipItem.raw;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+
+        <footer>
+            <a th:href="@{/autos}">Autos</a> / 
+            <a th:href="@{/conteos}">Conteos</a>
+            <a th:href="@{/facturas}">Facturas</a>
+            <a th:href="@{/inventario}">Inventario</a>
+            <a th:href="@{/pagos}">Pagos</a>
+            <a th:href="@{/tiketeras}">Tiketeras</a>
+        </footer>
+    </body>
+</html>

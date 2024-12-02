@@ -5,22 +5,29 @@
 package com.proyecto.topcar.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.Data;
 
-import java.util.Date;
+
 
 @Data
 @Entity
 public class Pago {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Double monto;
-    private Date fechaPago;
-    private String metodoPago;
+
+    @Column(nullable = false)
+    private LocalDate fechaPago;
+
+    @Column(nullable = false, length = 50)
+    private String metodoPago; // Por ejemplo, "Tarjeta", "Efectivo", etc.
 
     @ManyToOne
-    @JoinColumn(name = "factura_id", nullable = false)
+    @JoinColumn(name = "factura_id", nullable = false, foreignKey = @ForeignKey(name = "fk_pago_factura"))
     private Factura factura;
 }

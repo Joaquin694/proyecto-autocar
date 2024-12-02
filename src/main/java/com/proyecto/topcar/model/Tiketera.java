@@ -12,17 +12,21 @@ import lombok.Data;
 @Data
 @Entity
 public class Tiketera {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "auto_id", nullable = false)
+    @JoinColumn(name = "auto_id", nullable = false, foreignKey = @ForeignKey(name = "fk_tiketera_auto"))
     private Auto auto;
 
+    @Column(nullable = false, length = 50, unique = true)
     private String ticket;
+
+    @Column(nullable = false)
     private LocalDate fechaEmision;
 
-    @Column(nullable = false, columnDefinition = "varchar(255) default 'activo'")
-    private String estadoTicket;
+    @Column(nullable = false, length = 50)
+    private String estadoTicket = "activo"; // Valor predeterminado asignado en el modelo.
 }

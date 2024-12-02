@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Conteo</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body{
+                padding: 20px;
+            }
+        </style>
 </head>
 <body>
-    <h1>Editar Conteo</h1>
+    <h1>Editar Conteo de Entrada/Salida</h1>
     <form th:action="@{/conteos/{id}(id=${conteo.id})}" method="post">
         <!-- Selección de Auto -->
         <label for="auto">Auto:</label>
-        <select id="auto" name="auto" th:each="auto : ${autos}" th:value="${auto.id}" th:text="${auto.nombre}" th:selected="${conteo.auto.id == auto.id}" required>
+        <select id="auto" name="auto" required>
+            <option th:each="auto : ${autos}" th:value="${auto.id}" th:text="${auto.nombre}" th:selected="${auto.id == conteo.auto.id}"></option>
         </select>
 
         <!-- Selección de Producto -->
         <label for="producto">Producto:</label>
-        <select id="producto" name="producto" th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.producto}" th:selected="${conteo.producto.id == producto.id}" required>
+        <select id="producto" name="producto" required>
+            <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.producto}" th:selected="${producto.id == conteo.producto.id}"></option>
         </select>
 
         <!-- Tipo -->
         <label for="tipo">Tipo:</label>
         <select id="tipo" name="tipo" required>
-            <option th:selected="${conteo.tipo == 'Entrada'}" value="Entrada">Entrada</option>
-            <option th:selected="${conteo.tipo == 'Salida'}" value="Salida">Salida</option>
+            <option value="Entrada" th:selected="${conteo.tipo == 'Entrada'}">Entrada</option>
+            <option value="Salida" th:selected="${conteo.tipo == 'Salida'}">Salida</option>
         </select>
 
         <!-- Cantidad -->

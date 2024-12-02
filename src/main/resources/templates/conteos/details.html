@@ -2,10 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Detalles de Conteo</title>
+    <title>Detalles del Conteo</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body{
+                padding: 20px;
+            }
+        </style>
 </head>
 <body>
-    <h1>Detalles de Conteo</h1>
+    <h1>Detalles del Conteo</h1>
     <p><strong>ID:</strong> <span th:text="${conteo.id}"></span></p>
     <p><strong>Auto:</strong> <span th:text="${conteo.auto.nombre}"></span></p>
     <p><strong>Producto:</strong> <span th:text="${conteo.producto.producto}"></span></p>

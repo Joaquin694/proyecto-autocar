@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <style>
+            body{
+                padding: 20px;
+            }
+        </style>
 </head>
 <body>
     <h1>Editar Producto en Inventario</h1>
-    <form th:action="@{/inventarios/{id}(id=${inventario.id})}" method="post">
+    <form th:action="@{/inventario/{id}(id=${inventario.id})}" method="post">
         <!-- Producto -->
         <label for="producto">Producto:</label>
         <input type="text" id="producto" name="producto" th:value="${inventario.producto}" required>
